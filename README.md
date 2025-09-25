@@ -1,4 +1,4 @@
 # Projeto-Pizzaria-com-SpringBoot
-Um projeto desenvolvido em dupla, onde tivemos por objetivo fazer o funcionamento de uma pizzaria implementando o framework SpringBoot e a dependência do Thymeleaf.
+O projeto foi desenvolvido em dupla, com o objetivo de simular o funcionamento de uma pizzaria. Para isso, utilizamos o framework Spring Boot para o backend e a dependência Thymeleaf para renderizar o frontend.
 
 Por: Eduardo Tebexerini Abreu e Pedro Albertini Fernandes Pinto
