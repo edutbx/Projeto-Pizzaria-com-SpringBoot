@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Pizzaria</title>
+    <link rel="stylesheet" href="css/cardapio.css">
+</head>
+<body>
+<header>
+    <h1>Pizzaria do Zilin!</h1>
+</header>
+<h2>Cardápio do Zilin</h2>
+<form id="formPedido" action="/pedido" method="get">
+    <h3>Sabores</h3>
+    <h4>Escolha o sabor da pizza:</h4>
+    <label>
+        <input type="radio" name="sabor" value="Calabresa" data-preco="40.00">
+        Calabresa - R$ 40,00
+    </label><br>
+    <label>
+        <input type="radio" name="sabor" value="Marguerita" data-preco="42.00">
+        Marguerita - R$ 42,00
+    </label><br>
+    <label>
+        <input type="radio" name="sabor" value="Frango com Catupiry" data-preco="45.00">
+        Frango com Catupiry - R$ 45,00
+    </label><br>
+    <label>
+        <input type="radio" name="sabor" value="Quatro Queijos" data-preco="47.00">
+        Quatro Queijos - R$ 47,00
+    </label><br>
+    <label>
+        <input type="radio" name="sabor" value="Portuguesa" data-preco="44.00">
+        Portuguesa - R$ 44,00
+    </label><br>
+
+    <h3>Bordas</h3>
+    <select name="borda">
+        <option value="Tradicional" data-preco="0.00">Tradicional - R$ 0,00</option>
+        <option value="Catupiry" data-preco="7.00">Recheada com Catupiry - R$ 7,00</option>
+        <option value="Cheddar" data-preco="7.00">Recheada com Cheddar - R$ 7,00</option>
+        <option value="Chocolate" data-preco="8.00">Recheada com Chocolate - R$ 8,00</option>
+    </select>
+
+    <h3>Adicionais</h3>
+    <ul>
+        <li><input type="checkbox" name="adicionais" value="Extra Queijo" data-preco="5.00"> Extra Queijo - R$ 5,00</li>
+        <li><input type="checkbox" name="adicionais" value="Bacon" data-preco="6.00"> Bacon - R$ 6,00</li>
+        <li><input type="checkbox" name="adicionais" value="Ovo" data-preco="3.00"> Ovo - R$ 3,00</li>
+        <li><input type="checkbox" name="adicionais" value="Tomate Seco" data-preco="4.00"> Tomate Seco - R$ 4,00</li>
+        <li><input type="checkbox" name="adicionais" value="Manjericão" data-preco="2.00"> Manjericão - R$ 2,00</li>
+    </ul>
+
+    <main>
+        <h5>CONCLUA O SEU PEDIDO.</h5>
+        <input type="hidden" name="total" id="total">
+        <button type="submit">Confirmar</button>
+    </main>
+</form>
+
+<script>
+    document.getElementById('formPedido').addEventListener('submit', function(e) {
+        let total = 0;
+        // Sabor
+        const sabor = document.querySelector('input[name="sabor"]:checked');
+        if(sabor) total += parseFloat(sabor.getAttribute('data-preco'));
+
+        // Borda
+        const borda = document.querySelector('select[name="borda"]');
+        total += parseFloat(borda.options[borda.selectedIndex].getAttribute('data-preco'));
+
+        // Adicionais
+        document.querySelectorAll('input[name="adicionais"]:checked').forEach(function(adicional){
+            total += parseFloat(adicional.getAttribute('data-preco'));
+        });
+
+        // Definindo o total no campo hidden
+        document.getElementById('total').value = total.toFixed(2).replace('.', ',');
+    });
+</script>
+</body>
+</html>

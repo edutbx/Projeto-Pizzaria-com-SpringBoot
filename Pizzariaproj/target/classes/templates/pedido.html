@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório do Pedido</title>
+    <link rel="stylesheet" href="css/pedido.css">
+</head>
+<body>
+<h2>Resumo do Pedido</h2>
+<div class="relatorio">
+    <p><strong>Sabor:</strong> <span th:text="${sabor}"></span></p>
+    <p><strong>Borda:</strong> <span th:text="${borda}"></span></p>
+
+    <p><strong>Adicionais:</strong></p>
+    <ul>
+        <li th:each="adicional : ${adicionais}" th:text="${adicional}"></li>
+    </ul>
+
+    <p class="total"><strong>Total:</strong> R$ <span th:text="${total}"></span></p>
+</div>
+</body>
+</html>
